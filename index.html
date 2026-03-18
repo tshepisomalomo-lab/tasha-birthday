@@ -8,70 +8,99 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap');
-        body { font-family: 'Inter', system-ui, sans-serif; }
+        
+        body { 
+            font-family: 'Inter', system-ui, sans-serif; 
+            margin: 0;
+            padding: 0;
+        }
         .title-font { font-family: 'Playfair Display', serif; }
-        .hero-bg { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); }
-        video { width: 100%; display: block; border-radius: 20px; }
+        
+        .hero-bg { 
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); 
+            min-height: 100vh;
+        }
+        
+        video { 
+            width: 100%; 
+            max-height: 320px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .memory-card {
+            min-width: 260px;
+            scroll-snap-align: center;
+        }
     </style>
 </head>
-<body class="bg-[#fff0f5] text-[#2d2d2d] overflow-x-hidden">
+<body class="bg-[#fff0f5] text-[#2d2d2d]">
 
     <!-- HERO -->
-    <section class="hero-bg min-h-screen flex items-center justify-center px-6 py-12">
+    <section class="hero-bg flex items-center justify-center px-5 py-16">
         <div class="max-w-md mx-auto text-center">
-            <div class="text-7xl mb-6">🎂</div>
-            <h1 class="title-font text-6xl font-bold text-pink-600 tracking-tighter">HAPPY BIRTHDAY</h1>
-            <h2 class="title-font text-6xl font-bold text-pink-700 mt-3">Tasha</h2>
-            <p class="mt-10 text-lg text-pink-700">From the guy who still thinks you're the most amazing girl in the world ❤️</p>
+            <div class="text-6xl mb-4">🎂</div>
+            <h1 class="title-font text-5xl font-bold text-pink-600 tracking-tighter">HAPPY BIRTHDAY</h1>
+            <h2 class="title-font text-6xl font-bold text-pink-700 mt-2">Tasha</h2>
+            <p class="mt-8 text-lg text-pink-700 px-4">
+                From the guy who still thinks you're the most amazing girl in the world ❤️
+            </p>
+
+            <div onclick="blowCandles()" 
+                 class="mt-12 mx-auto w-36 h-36 bg-white rounded-3xl shadow-xl flex items-center justify-center cursor-pointer active:scale-95 transition-transform">
+                <div class="text-center">
+                    <div class="text-5xl mb-1">🎂</div>
+                    <div class="text-xs font-medium text-pink-500">Tap to blow candles</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- MEMORY LANE -->
-    <section class="max-w-md mx-auto px-6 py-12 bg-white">
+    <section class="max-w-md mx-auto px-5 py-10 bg-white">
         <h3 class="text-pink-600 text-sm font-medium tracking-widest mb-6 text-center">OUR LITTLE MEMORY LANE</h3>
         
-        <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory">
-            <!-- Photo 1 -->
-            <div class="min-w-[260px] snap-center bg-white rounded-3xl overflow-hidden shadow-sm">
-                <img src="images/tasha1.jpeg" alt="Memory 1" class="w-full h-56 object-cover">
+        <div class="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
+            <div class="memory-card bg-white rounded-3xl overflow-hidden shadow-sm snap-center">
+                <img src="images/tasha1.jpeg" class="w-full h-56 object-cover">
                 <div class="p-4 text-center text-xs text-pink-700">Our first pic</div>
             </div>
 
-            <!-- Video -->
-            <div class="min-w-[260px] snap-center bg-white rounded-3xl overflow-hidden shadow-sm">
+            <div class="memory-card bg-white rounded-3xl overflow-hidden shadow-sm snap-center">
                 <video id="danceVideo" loop playsinline controls class="w-full h-56 object-cover">
                     <source src="https://raw.githack.com/tshepisomalomo-lab/tasha-birthday/main/images/tasha2.mp4" type="video/mp4">
                 </video>
                 <div class="p-4 text-center text-xs text-pink-700">Abo o gana go ja 💃</div>
             </div>
 
-            <!-- Photo 3 -->
-            <div class="min-w-[260px] snap-center bg-white rounded-3xl overflow-hidden shadow-sm">
-                <img src="images/tasha3.jpeg" alt="Memory 3" class="w-full h-56 object-cover">
+            <div class="memory-card bg-white rounded-3xl overflow-hidden shadow-sm snap-center">
+                <img src="images/tasha3.jpeg" class="w-full h-56 object-cover">
                 <div class="p-4 text-center text-xs text-pink-700">Ya practice ne e chaile</div>
             </div>
         </div>
     </section>
 
-    <!-- Wish Button -->
-    <section class="max-w-md mx-auto px-6 py-16 bg-white text-center">
-        <div class="text-8xl mb-6">🕯️</div>
-        <p class="text-pink-600 text-xl font-medium mb-8">Make a wish...</p>
+    <!-- Wish -->
+    <section class="max-w-md mx-auto px-5 py-12 bg-white text-center">
+        <div class="text-7xl mb-4">🕯️</div>
+        <p class="text-pink-600 text-xl font-medium mb-6">Make a wish...</p>
         <button onclick="makeWish()" 
                 class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-6 rounded-3xl text-lg font-semibold shadow-lg active:scale-95">
             TAP TO MAKE YOUR WISH ✨
         </button>
-        <div id="wish-result" class="mt-8 text-sm text-pink-700 hidden">
-            Wish granted in the universe ❤️
-        </div>
+        <div id="wish-result" class="mt-8 text-sm text-pink-700 hidden">Wish granted ❤️</div>
     </section>
 
     <script>
-        // Enable video sound after tap
+        // Enable video with sound
         document.addEventListener('click', () => {
             const video = document.getElementById('danceVideo');
             if (video) video.play().catch(() => {});
         }, { once: true });
+
+        function blowCandles() {
+            alert("🎉 Candles blown! Happy Birthday Tasha ❤️");
+        }
 
         function makeWish() {
             document.getElementById('wish-result').classList.remove('hidden');
